@@ -1,0 +1,23 @@
+syntax = "proto3";
+option go_package="/generated";
+package service;
+
+import "internal/server/service/protos/ndarray.proto";
+
+service CreateService {
+    rpc HandleCreate (CreateRequest) returns (CreateReply) {}
+}
+
+message CreateRequest {
+    string name = 1;
+}
+
+message CreateReply {
+    int32 code = 1;
+    string message = 2;
+}
+
+message InsertRequest {
+    string name = 1;
+    repeated ndarray data = 2;
+}

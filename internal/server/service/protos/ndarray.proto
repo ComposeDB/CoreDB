@@ -1,0 +1,15 @@
+syntax = "proto3";
+option go_package="/generated";
+
+import "internal/server/service/protos/dtype.proto";
+
+/**
+ * aiming for a minimal representation based the __array_interface__
+ * see https://docs.scipy.org/doc/numpy/reference/arrays.interface.html
+ */
+message ndarray {
+    repeated int64 shape = 1;
+    dtype dtype = 101;
+    bytes data = 201;
+    repeated int64 strides = 301;
+}

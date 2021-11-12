@@ -1,6 +1,11 @@
 package utilities
 
-import "github.com/spf13/viper"
+import (
+	"fmt"
+	"path/filepath"
+
+	"github.com/spf13/viper"
+)
 
 type Config struct {
 	Port       int
@@ -9,11 +14,11 @@ type Config struct {
 
 func LoadConfig(path string) (config Config, err error) {
 	viper.AddConfigPath(path)
+	viper.SetDefault("Datafolder", filepath.Join(GetHomeDir(), ".autoai", "coredb", "data"))
 	viper.SetConfigName("coredb")
 	viper.SetConfigType("yaml")
-	err = viper.ReadInConfig()
-	if err != nil {
-		return
+	if err := viper.ReadInConfig(); err != nil {
+		fmt.Println("Configuration Not Found...")
 	}
 	err = viper.Unmarshal(&config)
 	return
