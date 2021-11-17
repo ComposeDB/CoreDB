@@ -1,4 +1,4 @@
-# CoreDB - The In-Disk Storage For Large Amount of Key-Value Pairs
+# CoreDB
 
 The goal of this project is to provide sample-level caching for vectors in data science pipeline.
 
